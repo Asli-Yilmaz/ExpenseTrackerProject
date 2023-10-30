@@ -1,0 +1,52 @@
+﻿@model ExpenseTracker.Models.Category
+
+@{
+    ViewData["PageTitle"] = Model.CategoryId == 0 ? "Create a new categoriy" : "Edit category";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5">
+        <form asp-action="CreateOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*bu form içerisinde categoryId iletimediği için gizli input olarak iletilecek şekilde modifiye ettik*@
+            <input type="hidden" name="CategoryId" value="@Model.CategoryId"/>
+            <div class="mb-3">
+                <div class='e-btn-group custom-rbt-group'>
+                    <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Expense")"  />
+                    <label class="e-btn" for="radioleft">Expense</label>
+
+                    <input type="radio" id="radioright" name="Type" value="Income" checked="@(Model.Type=="Income")" />
+                    <label class="e-btn" for="radioright">Income</label>
+                </div>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <ejs-textbox id="title" placeholder="Title" ajs-for="Title" floatLabelType="Always"></ejs-textbox>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <ejs-textbox id="icon" placeholder="Icon" ajs-for="Icon" floatLabelType="Always"></ejs-textbox>
+                <span asp-validation-for="Icon" class="text-danger"></span>
+            </div>
+            
+            <ejs-button id="submit" typeof="submit" content="submit" cssClass="e-success"></ejs-button>
+        </form>
+        </div>
+        
+    </div>
+    <div class="col-md-5">
+        <div class="h-100 d-flex justify-content-center align-items-center" style="background-color:#198754;  border-radius: 1rem;">
+            <i class="bi bi-cash-coin fa-lg" style="font-size: 70px"></i>
+        </div>
+    </div>
+</div>
+
+@* bu kısım artık gerekli degil cünkü breadcrumps kullanacağız
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
