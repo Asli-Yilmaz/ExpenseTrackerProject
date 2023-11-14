@@ -2,8 +2,9 @@
 
 @{
     ViewData["PageTitle"] = "Categories";
-    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
-    ViewData["PageActionTitle"] = "+ New Category";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/CreateOrEdit";
+    
   
 }
 
@@ -18,6 +19,11 @@
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate"> </e-grid-column>
             </e-grid-columns>
         </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="h-100 d-flex justify-content-center align-items-center" style="background-color:#198754;  border-radius: 1rem;">
+            <i class="bi bi-cash-coin fa-lg" style="font-size: 70px"></i>
+        </div>
     </div>
 </div>
 <script id="typeColumnTemplate" type="text/x-template">

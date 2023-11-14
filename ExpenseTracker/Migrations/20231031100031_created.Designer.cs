@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExpenseTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContex))]
-    [Migration("20231028085654_create")]
-    partial class create
+    [Migration("20231031100031_created")]
+    partial class created
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,9 +61,6 @@ namespace ExpenseTracker.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("CtegoryId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Date")

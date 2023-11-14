@@ -19,11 +19,11 @@
                     <input type="radio" id="radioright" name="Type" value="Income" checked="@(Model.Type=="Income")" />
                     <label class="e-btn" for="radioright">Income</label>
                 </div>
-                <span asp-validation-for="Type" class="text-danger"></span>
+                    @*<span asp-validation-for="Type" class="text-danger"></span>*@
             </div>
             <div class="mb-3">
                 <ejs-textbox id="title" placeholder="Title" ajs-for="Title" floatLabelType="Always"></ejs-textbox>
-                <span asp-validation-for="Title" class="text-danger"></span>
+                <span asp-validation-for="Title" class="text-danger fs-6"></span>
             </div>
             <div class="mb-3">
                 <ejs-textbox id="icon" placeholder="Icon" ajs-for="Icon" floatLabelType="Always"></ejs-textbox>
@@ -47,6 +47,10 @@
     <a asp-action="Index">Back to List</a>
 </div>
 *@
+@*in this project we're only using server side validation so no need for this client side validation
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+*@

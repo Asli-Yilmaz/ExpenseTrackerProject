@@ -15,6 +15,7 @@
 
 </head>
 <body class="e-bigger">
+    <partial name="_SideBar"/>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -36,37 +37,44 @@
             </div>
         </nav>
     </header>
+    @*we are adding a new div here to give this content a left margin to prevent from possible missoriantations because of the sidebar*@
+    <div class="main-content">
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+                <div class="@(ViewData["isDashboard"]==null? "col-md-10": "col-md-12")>
                 <main role="main" class="pb-3">
-                    <div class="row">
+                    @*we are adding "if"" here to make sure breadcrumps don't show on the dashboard*@
+                        @if (ViewData["isDashboard"] == null) { 
+                            <div class="row">
                         <div class="col-md-7">
                             <div class="d-flex flex-column mb-5">
                                 <div class="d-flex mb-1">
                                     <div class="flex-grow-1">
-                                    <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                        <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
                                     </div>
                                     <div>
-                                        @if (ViewData["PageActionTitle"] != null)
+                                        @if (ViewData["PageActionText"] != null)
                                         {
-                                            <a class="btn btn-success" href="@ViewData["PageActionUrl"]">
-                                                @ViewData["PageActionTitle"]
+                                            <a class="btn btn-success" href="@ViewData["PageActionUrl"]" style=" text-decoration:none; color:white; ">
+                                                @ViewData["PageActionText"]
                                             </a>
                                         }
                                         
                                     </div>
                                 </div>
+                                <ejs-breadcrumb id="breadcrumb" separatorTemplate=">">
+                                </ejs-breadcrumb>
                             </div>
                         </div>
                      </div>
+                        }
                     @RenderBody()
                 </main>
             </div>
         </div>
         
     </div>
-
+    </div>
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

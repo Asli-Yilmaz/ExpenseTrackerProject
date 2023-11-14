@@ -8,6 +8,7 @@ namespace ExpenseTracker.Models
         [Key]
         public int CategoryId { get; set; }
         [Column(TypeName ="Character Varying(50)")]
+        [Required(ErrorMessage ="Title is required.")]
         public string Title { get; set;}
         [Column(TypeName = "Character Varying(50)")]
         public string Icon { get; set; } = " ";
@@ -23,5 +24,6 @@ namespace ExpenseTracker.Models
                 return this.Icon + " " + this.Title;
             }
         }
+        
     }
 }
